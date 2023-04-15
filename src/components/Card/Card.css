@@ -5,6 +5,12 @@
   width: 300px;
   background-color: black;
   border-radius: 20px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.card-selecionado {
+  border: 1px dashed #ffb500;
 }
 
 .card-image {

@@ -1,21 +1,20 @@
-import './App.css';
-import { CardList } from './components/CardList/CardList';
+import { BrowserRouter } from 'react-router-dom';
 import { Header } from './components/Header/Header';
-import { produtos } from './listaProdutos';
+import { Router } from './Router/Router';
+import { SelecionadoProvider } from './contexts/SelecionadoContext';
+import './App.css';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
 
-      <main className='main'>
-        <CardList title='Entradas' list={produtos.entradas} />
-
-        <CardList title='Principais' list={produtos.principais} />
-
-        <CardList title='Sobremesas' list={produtos.sobremesas} />
-      </main>
-    </>
+      <SelecionadoProvider>
+        <main className='main'>
+          <Router />
+        </main>
+      </SelecionadoProvider>
+    </BrowserRouter>
   );
 }
 

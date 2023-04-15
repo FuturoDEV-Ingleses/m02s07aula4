@@ -1,10 +1,23 @@
 import PropTypes from 'prop-types';
 
+import { useSelecionados } from '../../contexts/SelecionadoContext';
 import './Card.css';
 
 export const Card = ({ produto }) => {
+  const { isSelecionado, handleDeselecionar, handleSelecionar } = useSelecionados();
+
+  const selecionado = isSelecionado(produto);
+
+  const handleClickCard = () => {
+    if (selecionado) {
+      handleDeselecionar(produto);
+    } else {
+      handleSelecionar(produto);
+    }
+  };
+
   return (
-    <div className='card'>
+    <div className={`card ${selecionado ? 'card-selecionado' : ''}`} onClick={handleClickCard}>
       <img alt='Imagem do produto' className='card-image' src={produto.img} />
 
       <div className='card-info'>
